@@ -5,6 +5,7 @@ permissions:
 jobs:
   verify:
     strategy:
+      fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
@@ -25,3 +26,4 @@ jobs:
         with:
           name: smoke-${{ matrix.os }}
           path: .local/smoke/
+          include-hidden-files: true

@@ -83,6 +83,7 @@ export async function setup() {
   }
   linkDirectory(path.join(runtime,'node_modules'),path.join(wb,'node_modules'));
   linkDirectory(path.join(root,'template/cards'),path.join(wb,'tplcards'));
+  mkdirSync(path.join(wb,'public'),{recursive:true});
   mkdirSync(path.join(root,'gallery/media'),{recursive:true});
   linkDirectory(path.join(root,'gallery/media'),path.join(wb,'public/cardpreviews'));
   linkDirectory(path.join(root,'gallery/thumbs'),path.join(wb,'public/cardthumbs'));

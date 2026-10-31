@@ -1,0 +1,16 @@
+{
+  "name": "talkcraft-oneclick",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Video TalkCraft workbench with portable Windows startup and reproducible shared dependencies",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "start": "node scripts/oneclick.mjs",
+    "setup": "node scripts/oneclick.mjs --setup",
+    "build": "node scripts/oneclick.mjs --build",
+    "test": "node scripts/run-tests.mjs",
+    "smoke": "node scripts/smoke-oneclick.mjs",
+    "project": "node scripts/oneclick.mjs --setup --project"
+  }
+}

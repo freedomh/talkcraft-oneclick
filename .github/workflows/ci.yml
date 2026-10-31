@@ -1,0 +1,27 @@
+name: One-click workbench
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  verify:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: scripts/node-version.txt
+          cache: npm
+          cache-dependency-path: runtime/package-lock.json
+      - run: npm run setup
+      - run: npm test
+      - run: npm run build
+      - run: npm run smoke
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smoke-${{ matrix.os }}
+          path: .local/smoke/

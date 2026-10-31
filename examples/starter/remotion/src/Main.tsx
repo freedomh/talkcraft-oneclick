@@ -1,0 +1,2 @@
+import React from 'react';import {AbsoluteFill,Audio,Sequence,staticFile} from 'remotion';import {SCENES} from './scenes';import {SHOTS} from './shots';import {Subtitles} from './Subtitles';
+export const Main=()=> <AbsoluteFill style={{background:'#101c3e'}}>{SHOTS.map(shot=>{const Scene=SCENES[shot.id];return <Sequence from={shot.startFrame} durationInFrames={shot.frames} key={shot.id}><Scene shot={shot}/></Sequence>})}<Subtitles/><Audio src={staticFile('narration.wav')}/></AbsoluteFill>;
